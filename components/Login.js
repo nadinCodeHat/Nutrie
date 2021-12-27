@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
-import { Text, Image, View, SafeAreaView, StyleSheet, Dimensions, TextInput, Button, Pressable } from 'react-native'
+import { Text, Image, View, SafeAreaView, StyleSheet, Dimensions, TextInput, Pressable } from 'react-native'
 import SplashScreen from 'react-native-splash-screen'
 
 const imageWidth = Dimensions.get('window').width;
 
-export default App = () => {
+const App = () => {
 
   const [email, onChangeEmail] = React.useState("nadinCodeHat@awesome.io");
   const [password, onChangePassword] = React.useState("***********");
@@ -15,7 +15,7 @@ export default App = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Image source={require("./assets/images/mask_group_login_up.png")} />
+      <Image source={require("../assets/images/mask_group_login_up.png")} />
       <View>
         <Text style={styles.heading}>Welcome</Text>
       </View>
@@ -40,19 +40,21 @@ export default App = () => {
         </Text>
         <View style={styles.othersignup}>
           <Pressable style={styles.facebooksignup}>
-            <Image style={{ width: 12, height: 24 }} source={require("./assets/images/facebook_120px.png")} />
+            <Image style={{ width: 12, height: 24 }} source={require("../assets/images/facebook_120px.png")} />
           </Pressable>
           <Pressable style={styles.googlesignup}>
-            <Image style={{ width: 24, height: 24 }} source={require("./assets/images/google_120px.png")} />
+            <Image style={{ width: 24, height: 24 }} source={require("../assets/images/google_120px.png")} />
           </Pressable>
         </View>
       </View>
       <View style={styles.bottom}>
-        <Image style={styles.imageBottom} source={require("./assets/images/mask_group_login_down.png")} />
+        <Image style={styles.imageBottom} source={require("../assets/images/mask_group_login_down.png")} />
       </View>
     </SafeAreaView>
   );
 }
+
+export default App
 
 const styles = StyleSheet.create({
   container: {

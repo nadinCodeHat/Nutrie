@@ -1,15 +1,14 @@
 import React, { useEffect } from 'react'
-import { Text, Image, View, SafeAreaView, StyleSheet, Dimensions, TouchableHighlight, Pressable } from 'react-native'
+import { Text, Image, View, SafeAreaView, StyleSheet, Dimensions, Pressable } from 'react-native'
 import SplashScreen from 'react-native-splash-screen'
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import Login from './components/Login'
 
 const imageWidth = Dimensions.get('window').width;
+const Stack = createNativeStackNavigator();
 
-export default App = () => {
-
-  useEffect(() => {
-    SplashScreen.hide();
-  });
-
+function SliderScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <Image style={styles.backgroundimage} source={require("./assets/images/slide_background_image.png")} />
@@ -25,8 +24,8 @@ export default App = () => {
           <Text style={styles.descriptiontext}>Quisque sit amet sagittis erat. Duis pharetra ornare venenatis. Nulla maximus porta velit ut molestie. Proin quis convallis mauris. In facilisis justo at mi pharetra lobortis. s.</Text>
           <View style={styles.buttons}>
             <Text style={styles.skipstep}>Skip step</Text>
-            <View style={styles.nextbtnview}>
-              <Pressable style={styles.nextbtn}>
+            <View style={styles.nextbtnview }>
+              <Pressable style={styles.nextbtn} onPress={() => navigation.navigate('Login')}>
                 <Text style={styles.nextbtntext}>Next</Text>
               </Pressable>
             </View>
@@ -36,6 +35,26 @@ export default App = () => {
     </SafeAreaView>
   );
 }
+
+function App() {
+  
+  useEffect(() => {
+    SplashScreen.hide();
+  });
+
+  return (
+    <NavigationContainer>
+      <Stack.Navigator screenOptions={{
+        headerShown: false
+      }}>
+        <Stack.Screen name="Slider" component={SliderScreen} />
+        <Stack.Screen name="Login" component={Login} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
+
+export default App;
 
 const styles = StyleSheet.create({
   container: {
@@ -105,7 +124,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#6CC57C',
     justifyContent: 'center',
     alignItems: 'center',
-    
+
   },
   nextbtntext: {
     fontSize: 15,
