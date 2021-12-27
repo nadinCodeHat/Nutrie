@@ -1,13 +1,10 @@
 import React, { useEffect } from 'react'
-import { Text, Image, View, SafeAreaView, StyleSheet, Dimensions, TextInput, Button, Pressable } from 'react-native'
+import { Text, Image, View, SafeAreaView, StyleSheet, Dimensions, TouchableHighlight, Pressable } from 'react-native'
 import SplashScreen from 'react-native-splash-screen'
 
 const imageWidth = Dimensions.get('window').width;
 
 export default App = () => {
-
-  const [email, onChangeEmail] = React.useState("nadinCodeHat@awesome.io");
-  const [password, onChangePassword] = React.useState("***********");
 
   useEffect(() => {
     SplashScreen.hide();
@@ -15,40 +12,26 @@ export default App = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Image source={require("./assets/images/mask_group_login_up.png")} />
-      <View>
-        <Text style={styles.heading}>Welcome</Text>
-      </View>
-      <View style={styles.allelements}>
-          <TextInput
-            style={styles.email}
-            onChangeEmail={onChangeEmail}
-            value={email}
-          />
-          <TextInput
-            style={styles.password}
-            onChangePassword={onChangePassword}
-            value={password}
-          />
-        <Text style={styles.normtext}>Forgot your password?</Text>
-        <Pressable style={styles.loginbtn}>
-          <Text style={styles.loginbtntext}>Login</Text>
-        </Pressable>
-        <Text style={{ marginTop: 20 }}>
-          <Text style={styles.normtext}>Don't have an account?</Text>
-          <Text style={{ fontWeight: 'bold', color: '#8D8D8D' }}> sign up </Text>
-        </Text>
-        <View style={styles.othersignup}>
-          <Pressable style={styles.facebooksignup}>
-            <Image style={{ width: 12, height: 24 }} source={require("./assets/images/facebook_120px.png")} />
-          </Pressable>
-          <Pressable style={styles.googlesignup}>
-            <Image style={{ width: 24, height: 24 }} source={require("./assets/images/google_120px.png")} />
-          </Pressable>
-        </View>
-      </View>
+      <Image style={styles.backgroundimage} source={require("./assets/images/slide_background_image.png")} />
       <View style={styles.bottom}>
-        <Image style={styles.imageBottom} source={require("./assets/images/mask_group_login_down.png")} />
+        <Image style={styles.backgroundimagewhite} source={require("./assets/images/slide_background_white.png")} />
+        <View style={styles.circleview}>
+          <Image style={styles.circle} source={require("./assets/images/green_filled_circle_50px.png")} />
+          <Image style={styles.circle} source={require("./assets/images/grey_filled_circle_50px.png")} />
+          <Image style={styles.circle} source={require("./assets/images/grey_filled_circle_50px.png")} />
+        </View>
+        <View style={styles.content}>
+          <Text style={styles.heading}> best tips for your diet </Text>
+          <Text style={styles.descriptiontext}>Quisque sit amet sagittis erat. Duis pharetra ornare venenatis. Nulla maximus porta velit ut molestie. Proin quis convallis mauris. In facilisis justo at mi pharetra lobortis. s.</Text>
+          <View style={styles.buttons}>
+            <Text style={styles.skipstep}>Skip step</Text>
+            <View style={styles.nextbtnview}>
+              <Pressable style={styles.nextbtn}>
+                <Text style={styles.nextbtntext}>Next</Text>
+              </Pressable>
+            </View>
+          </View>
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -57,107 +40,75 @@ export default App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F4F5FA',
   },
-  heading: {
-    marginTop: 80,
-    justifyContent: 'center',
-    alignItems: 'center',
-    fontWeight: 'bold',
-    fontSize: 40,
-    textAlign: 'center',
-    color: '#23233C',
-  },
-  allelements: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 30,
-  },
-  email: {
-    width: 336,
-    height: 54,
-    borderRadius: 5,
-    backgroundColor: 'white',
-    fontSize: 14,
-    color: '#23233C',
-    shadowColor: '#0D4E81',
-    elevation: 5,
-    shadowOffset: {
-      width: 0,
-      height: 6,
-    },
-    shadowOpacity: 5,
-    paddingLeft: 20,
-  },
-  password: {
-    marginTop: 30,
-    width: 336,
-    height: 54,
-    borderRadius: 5,
-    backgroundColor: 'white',
-    fontSize: 14,
-    color: '#23233C',
-    shadowColor: '#0D4E81',
-    elevation: 5,
-    shadowOffset: {
-      width: 0,
-      height: 6,
-    },
-    shadowOpacity: 5,
-    paddingLeft: 20,
-  },
-  normtext: {
-    marginTop: 20,
-    fontSize: 13,
-    color: '#8D8D8D',
-  },
-  loginbtn: {
-    marginTop: 20,
-    backgroundColor: '#23233C',
-    width: 333,
-    height: 54,
-    borderRadius: 18,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  loginbtntext: {
-    color: 'white',
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  othersignup: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexWrap: 'wrap',
-    marginTop: 20,
-  },
-  facebooksignup: {
-    width: 82,
-    height: 51,
-    backgroundColor: 'white',
-    margin: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 10,
-  },
-  googlesignup: {
-    width: 82,
-    height: 51,
-    backgroundColor: 'white',
-    margin: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 10,
+  backgroundimage: {
+    width: 430,
+    resizeMode: 'stretch',
+    height: 630,
+    overflow: 'hidden',
   },
   bottom: {
     flex: 1,
     justifyContent: 'flex-end',
   },
-  imageBottom: {
+  backgroundimagewhite: {
     width: imageWidth,
     position: 'absolute',
     bottom: 0,
+  },
+  circleview: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  circle: {
+    width: 10,
+    height: 10,
+    marginHorizontal: 5,
+  },
+  content: {
+    flex: 1,
+    marginTop: 30,
+    justifyContent: 'flex-start',
+  },
+  heading: {
+    fontWeight: 'bold',
+    fontSize: 25,
+    textAlign: 'center',
+    color: '#23233C',
+  },
+  descriptiontext: {
+    fontSize: 10,
+    color: '#A5A5A5',
+    marginTop: 20,
+    marginLeft: 60,
+    marginRight: 60,
+    textAlign: 'center',
+  },
+  buttons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 50,
+  },
+  skipstep: {
+    fontSize: 15,
+    color: '#B4B4B4',
+    marginHorizontal: 60,
+  },
+  nextbtnview: {
+    marginHorizontal: 60,
+  },
+  nextbtn: {
+    width: 115,
+    height: 42,
+    borderRadius: 8,
+    backgroundColor: '#6CC57C',
+    justifyContent: 'center',
+    alignItems: 'center',
+    
+  },
+  nextbtntext: {
+    fontSize: 15,
+    color: 'white',
   }
 });
