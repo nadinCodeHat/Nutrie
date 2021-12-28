@@ -1,21 +1,16 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Text, Image, View, SafeAreaView, StyleSheet, Dimensions, TextInput, Pressable } from 'react-native'
-import SplashScreen from 'react-native-splash-screen'
 
 const imageWidth = Dimensions.get('window').width;
 
-const App = () => {
+const App = ({ navigation }) => {
 
   const [email, onChangeEmail] = React.useState("nadinCodeHat@awesome.io");
   const [password, onChangePassword] = React.useState("***********");
 
-  useEffect(() => {
-    SplashScreen.hide();
-  });
-
   return (
     <SafeAreaView style={styles.container}>
-      <Image source={require("../assets/images/mask_group_login_up.png")} />
+      <Image source={require("../assets/images/mask_group_up.png")} />
       <View>
         <Text style={styles.heading}>Welcome</Text>
       </View>
@@ -31,7 +26,7 @@ const App = () => {
           value={password}
         />
         <Text style={styles.normtext}>Forgot your password?</Text>
-        <Pressable style={styles.loginbtn}>
+        <Pressable style={styles.loginbtn} onPress={() => navigation.navigate('Ask')}>
           <Text style={styles.loginbtntext}>Login</Text>
         </Pressable>
         <Text style={{ marginTop: 20 }}>
@@ -48,7 +43,7 @@ const App = () => {
         </View>
       </View>
       <View style={styles.bottom}>
-        <Image style={styles.imageBottom} source={require("../assets/images/mask_group_login_down.png")} />
+        <Image style={styles.imageBottom} source={require("../assets/images/mask_group_down.png")} />
       </View>
     </SafeAreaView>
   );
