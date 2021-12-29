@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { Text, Image, View, SafeAreaView, StyleSheet, Pressable, ScrollView } from 'react-native'
-//import CircularProgress from 'react-native-circular-progress-indicator'
+import { Text, Image, View, SafeAreaView, StyleSheet, Pressable, ScrollView, Dimensions } from 'react-native'
 
-const App = ({ navigation }) => {
+const screenWidth = Dimensions.get('window').width;
+
+const App = (navigation) => {
 
   const [currentDate, getCurrentDate] = useState('');
   const monthNames = ["January", "February", "March", "April", "May", "June",
@@ -31,7 +32,7 @@ const App = ({ navigation }) => {
         </View>
       </View>
       <View style={styles.cardlayout}>
-        <ScrollView horizontal={true}>
+        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           <View style={styles.card1}>
             <View>
               <Text style={{ fontSize: 16, color: '#23233C', fontWeight: 'bold' }}>Results of the week</Text>
@@ -44,16 +45,6 @@ const App = ({ navigation }) => {
                   <Text>you level up</Text>
                   <Text>Level 8</Text>
                 </View>
-                {/*<CircularProgress
-                value={60}
-                radius={120}
-                duration={2000}
-                textColor={'#ecf0f1'}
-                maxValue={200}
-                title={'KM/H'}
-                titleColor={'white'}
-                titleStyle={{ fontWeight: 'bold' }}
-              />*/}
               </View>
             </View>
           </View>
@@ -76,11 +67,43 @@ const App = ({ navigation }) => {
           <Text style={styles.defaulttext}>Dinner</Text>
         </Pressable>
       </View>
-      <ScrollView horizontal={true}>
-        <Image source={require("../assets/images/raisins_and_banana.png")} />
-        <Image source={require("../assets/images/yogurt_with_fruits.png")} />
-        <Image source={require("../assets/images/pie.png")} />
+      <ScrollView contentContainerStyle={styles.contentContainer} horizontal={true} showsHorizontalScrollIndicator={false}>
+        <View style={styles.imageviews}>
+          <View style={styles.shadowview}>
+            <Image source={require("../assets/images/raisins_and_banana.png")} />
+          </View>
+          <Text style={styles.defaultimagetext}>Yogurt with Fruits</Text>
+        </View>
+        <View style={styles.imageviews}>
+          <View style={styles.shadowview}>
+            <Image source={require("../assets/images/yogurt_with_fruits.png")} />
+          </View>
+          <Text style={styles.selectedtext}>Yogurt with Fruits</Text>
+        </View>
+        <View style={styles.imageviews}>
+          <View style={styles.shadowview}>
+            <Image source={require("../assets/images/pie.png")} />
+          </View>
+          <Text style={styles.defaultimagetext}>Yogurt with Fruits</Text>
+        </View>
       </ScrollView>
+      <View style={styles.bottom}>
+        <View style={styles.navbar}>
+          <Pressable style={styles.selectedbtn}>
+            <Image style={{width: 25, height: 25}} source={require("../assets/images/home_50px.png")} />
+            <Text style={{fontSize: 13, fontWeight: 'bold', color: 'white', marginLeft: 10}}>Home</Text>
+          </Pressable>
+          <Pressable style={styles.defaultnavbtn}>
+            <Image style={{width: 25, height: 25}} source={require("../assets/images/profile_50px.png")} />
+          </Pressable>
+          <Pressable style={styles.defaultnavbtn}>
+            <Image style={{width: 25, height: 25}} source={require("../assets/images/ribbon_50px.png")} />
+          </Pressable>
+          <Pressable style={styles.defaultnavbtn}>
+            <Image style={{width: 25, height: 25}} source={require("../assets/images/settings_50px.png")} />
+          </Pressable>
+        </View>
+      </View>
     </SafeAreaView>
   );
 }
@@ -167,5 +190,58 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     marginTop: 40,
     marginLeft: 30,
+  },
+  contentContainer: {
+    height: 420,
+    alignItems: 'center'
+  },
+  imageviews: {
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  shadowview: {
+    shadowOffset: { width: 10, height: 10 },
+    shadowColor: '#0C256C',
+    shadowOpacity: .13,
+    elevation: 10,
+  },
+  defaultimagetext: {
+    color: '#312D2D',
+    fontSize: 16,
+    fontWeight: 'bold',
+    opacity: 0.16,
+    marginTop: 20,
+  },
+  selectedtext: {
+    color: '#312D2D',
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginTop: 20,
+  },
+  bottom: {
+    backgroundColor: 'white',
+    width: screenWidth,
+    height: 65,
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
+    justifyContent: 'center',
+  },
+  navbar: {
+    flexDirection: 'row',
+    marginStart: 20,
+    alignItems: 'center',
+  },
+  selectedbtn: {
+    flexDirection: 'row',
+    width: 101,
+    height: 33,
+    backgroundColor: '#6CC57C',
+    borderRadius: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginStart: 40,
+  },
+  defaultnavbtn: {
+    marginStart: 40,
   },
 });
