@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, Image, View, SafeAreaView, StyleSheet, Dimensions, TextInput, Pressable } from 'react-native'
+import { Text, Image, View, SafeAreaView, StyleSheet, Dimensions, TextInput, TouchableOpacity } from 'react-native'
 
 const imageWidth = Dimensions.get('window').width;
 
@@ -26,20 +26,20 @@ const App = ({ navigation }) => {
           value={password}
         />
         <Text style={styles.normtext}>Forgot your password?</Text>
-        <Pressable style={styles.loginbtn} onPress={() => navigation.navigate('Ask')}>
+        <TouchableOpacity style={styles.loginbtn} onPress={() => navigation.navigate('Ask')}>
           <Text style={styles.loginbtntext}>Login</Text>
-        </Pressable>
+        </TouchableOpacity>
         <Text style={{ marginTop: 20 }}>
           <Text style={styles.normtext}>Don't have an account?</Text>
           <Text style={{ fontWeight: 'bold', color: '#8D8D8D' }}> sign up </Text>
         </Text>
         <View style={styles.othersignup}>
-          <Pressable style={styles.facebooksignup}>
-            <Image style={{ width: 12, height: 24 }} source={require("../assets/images/facebook_120px.png")} />
-          </Pressable>
-          <Pressable style={styles.googlesignup}>
-            <Image style={{ width: 24, height: 24 }} source={require("../assets/images/google_120px.png")} />
-          </Pressable>
+          <TouchableOpacity style={styles.facebooksignup}>
+            <Image style={{ width: 12, height: 24 }} source={require("../assets/icons/facebook_120px.png")} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.googlesignup}>
+            <Image style={{ width: 24, height: 24 }} source={require("../assets/icons/google_120px.png")} />
+          </TouchableOpacity>
         </View>
       </View>
       <View style={styles.bottom}>

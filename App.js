@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
-import { Text, Image, View, SafeAreaView, StyleSheet, Dimensions, Pressable } from 'react-native'
+import { Text, Image, View, SafeAreaView, StyleSheet, Dimensions, TouchableOpacity } from 'react-native'
 import SplashScreen from 'react-native-splash-screen'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Login from './components/Login'
 import Ask from './components/Ask'
 import HomeScreen from './components/HomeScreen'
-//import Details from './components/Details'
+import Details from './components/Details'
 
 const imageWidth = Dimensions.get('window').width;
 const Stack = createNativeStackNavigator();
@@ -18,9 +18,9 @@ function SliderScreen({ navigation }) {
       <View style={styles.bottom}>
         <Image style={styles.backgroundimagewhite} source={require("./assets/images/slide_background_white.png")} />
         <View style={styles.circleview}>
-          <Image style={styles.circle} source={require("./assets/images/green_filled_circle_50px.png")} />
-          <Image style={styles.circle} source={require("./assets/images/grey_filled_circle_50px.png")} />
-          <Image style={styles.circle} source={require("./assets/images/grey_filled_circle_50px.png")} />
+          <Image style={styles.circle} source={require("./assets/icons/green_filled_circle_50px.png")} />
+          <Image style={styles.circle} source={require("./assets/icons/grey_filled_circle_50px.png")} />
+          <Image style={styles.circle} source={require("./assets/icons/grey_filled_circle_50px.png")} />
         </View>
         <View style={styles.content}>
           <Text style={styles.heading}> best tips for your diet </Text>
@@ -28,9 +28,9 @@ function SliderScreen({ navigation }) {
           <View style={styles.buttons}>
             <Text style={styles.skipstep}>Skip step</Text>
             <View style={styles.nextbtnview}>
-              <Pressable style={styles.nextbtn} onPress={() => navigation.navigate('Login')}>
+              <TouchableOpacity style={styles.nextbtn} onPress={() => navigation.navigate('Login')}>
                 <Text style={styles.nextbtntext}>Next</Text>
-              </Pressable>
+              </TouchableOpacity>
             </View>
           </View>
         </View>
@@ -54,11 +54,7 @@ function App() {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Ask" component={Ask} />
         <Stack.Screen name="HomeScreen" component={HomeScreen} />
-        {/*
-        
         <Stack.Screen name="Details" component={Details} />
-        */}
-
       </Stack.Navigator>
     </NavigationContainer>
   );

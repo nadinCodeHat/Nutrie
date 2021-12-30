@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, Image, View, SafeAreaView, StyleSheet, TextInput, Pressable } from 'react-native'
+import { Text, Image, View, SafeAreaView, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
 
 const App = ({ navigation }) => {
 
@@ -28,9 +28,9 @@ const App = ({ navigation }) => {
             <View style={styles.bottom}>
                 <Text style={styles.steps}>1/4 steps</Text>
                 <View style={styles.nextbtn} >
-                    <Pressable style={styles.btn} onPress={() => navigation.navigate('HomeScreen')}>
-                        <Image style={{ width: 60, height: 60 }} source={require("../assets/images/forward_120px.png")} />
-                    </Pressable>
+                    <TouchableOpacity style={styles.btn} onPress={() => navigation.navigate('HomeScreen')}>
+                        <Image style={{ width: 60, height: 60 }} source={require("../assets/icons/forward_120px.png")} />
+                    </TouchableOpacity>
                     <Text style={styles.nexttext} >Next</Text>
                 </View>
             </View>
