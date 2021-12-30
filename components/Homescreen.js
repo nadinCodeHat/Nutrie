@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { Text, Image, View, SafeAreaView, StyleSheet, Pressable, ScrollView, Dimensions } from 'react-native'
+import { Text, Image, View, SafeAreaView, StyleSheet, ScrollView, Dimensions, TouchableOpacity, ImageBackground } from 'react-native'
 
 const screenWidth = Dimensions.get('window').width;
 
-const App = (navigation) => {
+const App = ({ navigation }) => {
 
   const [currentDate, getCurrentDate] = useState('');
   const monthNames = ["January", "February", "March", "April", "May", "June",
@@ -25,7 +25,7 @@ const App = (navigation) => {
       <View style={styles.headerview}>
         <View style={styles.view1}>
           <Text style={styles.activity}>Activity</Text>
-          <Image style={styles.expandarrow} source={require("../assets/images/expand_arrow_120px.png")} />
+          <Image style={styles.expandarrow} source={require("../assets/icons/expand_arrow_120px.png")} />
         </View>
         <View style={styles.view2}>
           <Text style={styles.datetext}>{currentDate}</Text>
@@ -33,8 +33,8 @@ const App = (navigation) => {
       </View>
       <View style={styles.cardlayout}>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          <View style={styles.card1}>
-            <View>
+          <View>
+            <View style={styles.card1}>
               <Text style={{ fontSize: 16, color: '#23233C', fontWeight: 'bold' }}>Results of the week</Text>
               <View style={styles.details}>
                 <View styles={{ flexDirection: 'column', }}>
@@ -47,36 +47,50 @@ const App = (navigation) => {
                 </View>
               </View>
             </View>
+            <View style={{ marginTop: -50, }}>
+              <Image source={require("../assets/icons/arrow.png")} />
+            </View>
           </View>
-          <View style={styles.card2}>
-            <View>
-              <Text>Your information</Text>
-              <Text>you have lost</Text>
+          <View>
+            <View style={styles.card2}>
+              <View>
+                <Text>Your information</Text>
+                <Text>you have lost</Text>
+              </View>
+            </View>
+            <View style={{ marginTop: -50, }}>
+              <Image source={require("../assets/icons/arrow.png")} />
             </View>
           </View>
         </ScrollView>
       </View>
       <View style={styles.buttonview}>
-        <Pressable style={styles.breakfastbtn}>
+        <TouchableOpacity style={styles.breakfastbtn}>
           <Text style={styles.breakfasttext}>Breakfast</Text>
-        </Pressable>
-        <Pressable style={styles.defaultbtn}>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.defaultbtn}>
           <Text style={styles.defaulttext}>Foods</Text>
-        </Pressable>
-        <Pressable style={styles.defaultbtn}>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.defaultbtn}>
           <Text style={styles.defaulttext}>Dinner</Text>
-        </Pressable>
+        </TouchableOpacity>
       </View>
       <ScrollView contentContainerStyle={styles.contentContainer} horizontal={true} showsHorizontalScrollIndicator={false}>
         <View style={styles.imageviews}>
           <View style={styles.shadowview}>
             <Image source={require("../assets/images/raisins_and_banana.png")} />
           </View>
-          <Text style={styles.defaultimagetext}>Yogurt with Fruits</Text>
+          <Text style={styles.defaultimagetext} >Yogurt with Fruits</Text>
         </View>
         <View style={styles.imageviews}>
           <View style={styles.shadowview}>
-            <Image source={require("../assets/images/yogurt_with_fruits.png")} />
+            <TouchableOpacity onPress={() => navigation.navigate('Details')}>
+              <ImageBackground style={{ width: 238, height: 344 }} source={require("../assets/images/yogurt_with_fruits_small.png")} >
+                <View style={styles.arrowwrapper}>
+                  <Image source={require("../assets/icons/arrow.png")} />
+                </View>
+              </ImageBackground>
+            </TouchableOpacity>
           </View>
           <Text style={styles.selectedtext}>Yogurt with Fruits</Text>
         </View>
@@ -89,19 +103,19 @@ const App = (navigation) => {
       </ScrollView>
       <View style={styles.bottom}>
         <View style={styles.navbar}>
-          <Pressable style={styles.selectedbtn}>
-            <Image style={{width: 25, height: 25}} source={require("../assets/images/home_50px.png")} />
-            <Text style={{fontSize: 13, fontWeight: 'bold', color: 'white', marginLeft: 10}}>Home</Text>
-          </Pressable>
-          <Pressable style={styles.defaultnavbtn}>
-            <Image style={{width: 25, height: 25}} source={require("../assets/images/profile_50px.png")} />
-          </Pressable>
-          <Pressable style={styles.defaultnavbtn}>
-            <Image style={{width: 25, height: 25}} source={require("../assets/images/ribbon_50px.png")} />
-          </Pressable>
-          <Pressable style={styles.defaultnavbtn}>
-            <Image style={{width: 25, height: 25}} source={require("../assets/images/settings_50px.png")} />
-          </Pressable>
+          <TouchableOpacity style={styles.selectedbtn}>
+            <Image style={{ width: 25, height: 25 }} source={require("../assets/icons/home_50px.png")} />
+            <Text style={{ fontSize: 13, fontWeight: 'bold', color: 'white', marginLeft: 10 }}>Home</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.defaultnavbtn}>
+            <Image style={{ width: 25, height: 25 }} source={require("../assets/icons/profile_50px.png")} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.defaultnavbtn}>
+            <Image style={{ width: 25, height: 25 }} source={require("../assets/icons/ribbon_50px.png")} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.defaultnavbtn}>
+            <Image style={{ width: 25, height: 25 }} source={require("../assets/icons/settings_50px.png")} />
+          </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView>
@@ -157,7 +171,7 @@ const styles = StyleSheet.create({
     height: 131,
     backgroundColor: 'white',
     borderRadius: 10,
-    marginLeft: 20,
+    marginLeft: 30,
     marginRight: 20,
   },
   details: {
@@ -188,7 +202,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
-    marginTop: 40,
     marginLeft: 30,
   },
   contentContainer: {
@@ -204,6 +217,12 @@ const styles = StyleSheet.create({
     shadowColor: '#0C256C',
     shadowOpacity: .13,
     elevation: 10,
+  },
+  arrowwrapper: {
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+    flex: 1,
+    resizeMode: 'contain'
   },
   defaultimagetext: {
     color: '#312D2D',
