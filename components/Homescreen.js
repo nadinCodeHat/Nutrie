@@ -38,52 +38,52 @@ const App = ({ navigation }) => {
             <View style={styles.card1}>
               <Text style={styles.cardheading}>Results of the week</Text>
               <View style={styles.details}>
-                <View styles={{ flexDirection: 'column'}}>
-                  <Text style={{fontSize: 10}}>you have lost</Text>
-                  <Text style={{fontSize: 15, color: '#6CC57C', fontWeight: 'bold'}}>-4kg</Text>
+                <View styles={{ flexDirection: 'column' }}>
+                  <Text style={{ fontSize: 10 }}>you have lost</Text>
+                  <Text style={{ fontSize: 15, color: '#6CC57C', fontWeight: 'bold' }}>-4kg</Text>
                 </View>
                 <View styles={{ flexDirection: 'column', }}>
-                  <Text style={{fontSize: 10}}>you level up</Text>
-                  <Text style={{fontSize: 15, color: '#6CC57C', fontWeight: 'bold'}}>Level 8</Text>
+                  <Text style={{ fontSize: 10 }}>you level up</Text>
+                  <Text style={{ fontSize: 15, color: '#6CC57C', fontWeight: 'bold' }}>Level 8</Text>
                 </View>
                 <View>
-                <Image source={require("../assets/icons/calories.png")} />
+                  <Image source={require("../assets/icons/calories.png")} />
                 </View>
               </View>
-              <View style={{alignItems: 'center'}}>
-                <Text style={{fontSize: 10}}>Never give up, {" "}
-                  <Text style={{color: '#6CC57C'}}>know more</Text>
+              <View style={{ alignItems: 'center' }}>
+                <Text style={{ fontSize: 10 }}>Never give up, {" "}
+                  <Text style={{ color: '#6CC57C' }}>know more</Text>
                 </Text>
               </View>
             </View>
             <View style={{ marginTop: -50, }}>
-              <Image source={require("../assets/icons/arrow.png")} />
+              <Image source={require("../assets/icons/arrow_forward.png")} />
             </View>
           </View>
           <View>
             <View style={styles.card2}>
-            <Text style={styles.cardheading}>Your Information</Text>
+              <Text style={styles.cardheading}>Your Information</Text>
               <View style={styles.details}>
-                <View styles={{ flexDirection: 'column'}}>
-                  <Text style={{fontSize: 10}}>you have lost</Text>
-                  <Text style={{fontSize: 15, color: '#6CC57C', fontWeight: 'bold'}}>-4kg</Text>
+                <View styles={{ flexDirection: 'column' }}>
+                  <Text style={{ fontSize: 10 }}>you have lost</Text>
+                  <Text style={{ fontSize: 15, color: '#6CC57C', fontWeight: 'bold' }}>-4kg</Text>
                 </View>
                 <View styles={{ flexDirection: 'column', }}>
-                  <Text style={{fontSize: 10}}>you level up</Text>
-                  <Text style={{fontSize: 15, color: '#6CC57C', fontWeight: 'bold'}}>Level 8</Text>
+                  <Text style={{ fontSize: 10 }}>you level up</Text>
+                  <Text style={{ fontSize: 15, color: '#6CC57C', fontWeight: 'bold' }}>Level 8</Text>
                 </View>
                 <View>
-                <Image source={require("../assets/icons/calories.png")} />
+                  <Image source={require("../assets/icons/calories.png")} />
                 </View>
               </View>
-              <View style={{alignItems: 'center'}}>
-                <Text style={{fontSize: 10}}>Never give up, {" "}
-                  <Text style={{color: '#6CC57C'}}>know more</Text>
+              <View style={{ alignItems: 'center' }}>
+                <Text style={{ fontSize: 10 }}>Never give up, {" "}
+                  <Text style={{ color: '#6CC57C' }}>know more</Text>
                 </Text>
               </View>
             </View>
             <View style={{ marginTop: -50, }}>
-              <Image source={require("../assets/icons/arrow.png")} />
+              <Image source={require("../assets/icons/arrow_forward.png")} />
             </View>
           </View>
         </ScrollView>
@@ -111,7 +111,7 @@ const App = ({ navigation }) => {
             <TouchableOpacity onPress={() => navigation.navigate('Details')}>
               <ImageBackground style={{ width: 238, height: 344 }} source={require("../assets/images/yogurt_with_fruits_small.png")} >
                 <View style={styles.arrowwrapper}>
-                  <Image source={require("../assets/icons/arrow.png")} />
+                  <Image source={require("../assets/icons/arrow_forward.png")} />
                 </View>
               </ImageBackground>
             </TouchableOpacity>
@@ -144,9 +144,7 @@ const App = ({ navigation }) => {
       </View>
     </SafeAreaView>
   );
-
 }
-
 
 export default App
 
