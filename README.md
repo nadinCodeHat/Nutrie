@@ -19,9 +19,9 @@ Simple Diet App Demo using React Native
 
 ## Samples
 
-![alt text](/.github/images/SplashScreen.jpg =400x866)
-![alt text](/.github/images/SliderScreen.jpg =400x866)
-![alt text](/.github/images/LoginScreen.jpg =400x866)
-![alt text](/.github/images/AskScreen.jpg =400x866)
-![alt text](/.github/images/HomeScreen.jpg =400x866)
-![alt text](/.github/images/DetailsScreen.jpg =400x866)
+![alt text](/.github/images/SplashScreen.jpg){:height="866px" width="400px"}
+![alt text](/.github/images/SliderScreen.jpg){:height="866px" width="400px"}
+![alt text](/.github/images/LoginScreen.jpg){:height="866px" width="400px"}
+![alt text](/.github/images/AskScreen.jpg){:height="866px" width="400px"}
+![alt text](/.github/images/HomeScreen.jpg){:height="866px" width="400px"}
+![alt text](/.github/images/DetailsScreen.jpg){:height="866px" width="400px"}
