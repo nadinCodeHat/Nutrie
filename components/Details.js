@@ -1,15 +1,22 @@
 import React from 'react'
-import { Text, View, StyleSheet, SafeAreaView, Image, Dimensions, TouchableOpacity, ScrollView, ImageBackground} from 'react-native'
+import { Text, View, StyleSheet, SafeAreaView, Image, Dimensions, TouchableOpacity, ScrollView } from 'react-native'
 
 const screenWidth = Dimensions.get('window').width;
 
-const App = () => {
+const App = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
-            
-            <ImageBackground source={require("../assets/images/mask_group_up.png")} >
-            <ScrollView vertical={true} showsVerticalScrollIndicator ={false} style={{marginTop: -100}}>
-                <Image style={styles.selectedimage} source={require("../assets/images/yogurt_with_fruits_large.png")} />
+            <Image style={styles.selectedimage} source={require("../assets/images/yogurt_with_fruits_large.png")} />
+            <Image style={styles.topimage} source={require("../assets/images/mask_group_up.png")} />
+            <View style={styles.arrowwrapper}>
+                <TouchableOpacity onPress={() => navigation.navigate('HomeScreen')}>
+                    <Image source={require("../assets/icons/arrow_backward.png")} />
+                </TouchableOpacity>
+                <TouchableOpacity >
+                    <Image source={require("../assets/icons/heart.png")} />
+                </TouchableOpacity>
+            </View>
+            <ScrollView vertical={true} showsVerticalScrollIndicator={false}>
                 <View style={styles.allelements}>
                     <View style={styles.headingtext}>
                         <Text style={styles.heading}>Yogurt with fruits</Text>
@@ -20,36 +27,48 @@ const App = () => {
                         <View style={styles.nutriinfolayout}>
                             <View style={styles.nutriinfo}>
                                 <Text style={styles.cal}>243</Text>
-                                <Text style={styles.nutrients}>calories</Text>
+                                <Text style={styles.defaultnutri}>calories</Text>
                             </View>
                             <View style={styles.nutriinfo}>
-                                <Text >2,8g</Text>
-                                <Text>fat</Text>
+                                <Text style={styles.defaultvalue}>2,8g</Text>
+                                <Text style={styles.defaultnutri}>fat</Text>
                             </View>
                             <View style={styles.nutriinfo}>
-                                <Text>45,7g</Text>
-                                <Text>carbohyd</Text>
+                                <Text style={styles.defaultvalue}>45,7g</Text>
+                                <Text style={styles.defaultnutri}>carbohyd</Text>
                             </View>
                             <View style={styles.nutriinfo}>
-                                <Text>9,8g</Text>
-                                <Text>proteins</Text>
+                                <Text style={styles.defaultvalue}>9,8g</Text>
+                                <Text style={styles.defaultnutri}>proteins</Text>
                             </View>
                         </View>
                     </View>
                     <View style={styles.ingredientscard}>
-                        <Text style={styles.ingredients}>Ingredients</Text>
+                        <Text style={styles.cardheading}>Ingredients</Text>
                         <View style={styles.ingredientswrapper}>
-                            <View>
-
+                            <View style={styles.fooditems}>
+                                <Image source={require("../assets/icons/kiwi.png")} />
+                                <Text style={{ fontSize: 12, color: '#23233C', paddingTop: 7 }}>Kiwi</Text>
+                            </View>
+                            <View style={styles.fooditems}>
+                                <Image source={require("../assets/icons/yogurt.png")} />
+                                <Text style={{ fontSize: 12, color: '#23233C', paddingTop: 7 }}>Yogurt</Text>
+                            </View>
+                            <View style={styles.fooditems}>
+                                <Image source={require("../assets/icons/cherry.png")} />
+                                <Text style={{ fontSize: 12, color: '#23233C', paddingTop: 7 }}>Cherry</Text>
+                            </View>
+                            <View style={styles.fooditems}>
+                                <Image source={require("../assets/icons/blueberry.png")} />
+                                <Text style={{ fontSize: 12, color: '#23233C', paddingTop: 7 }}>Blueberry</Text>
                             </View>
                         </View>
                     </View>
                     <View style={styles.preparationcard}>
-                        <Text style={styles.ingredients}>Preparation</Text>
+                        <Text style={styles.cardheading}>Preparation</Text>
                     </View>
                 </View>
             </ScrollView>
-            </ImageBackground>
             <View style={styles.bottom}>
                 <View style={styles.navbar}>
                     <TouchableOpacity style={styles.selectedbtn}>
@@ -78,8 +97,21 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#F4F5FA',
     },
+    topimage: {
+        resizeMode: 'contain',
+        position: 'absolute',
+    },
+    arrowwrapper: {
+        justifyContent: 'space-between',
+        width: 400,
+        alignItems: 'center',
+        resizeMode: 'contain',
+        paddingTop: 102,
+        position: 'absolute',
+        flexDirection: 'row'
+    },
     selectedimage: {
-        marginTop: -150,
+        marginTop: -50,
         width: screenWidth,
         height: 456,
     },
@@ -127,9 +159,27 @@ const styles = StyleSheet.create({
     nutriinfolayout: {
         flexDirection: 'row',
         paddingTop: 18,
+        width: 250,
+        alignItems: 'center',
+        justifyContent: 'space-between'
     },
     nutriinfo: {
         flexDirection: 'column',
+        alignItems: 'center'
+    },
+    cal: {
+        fontSize: 22,
+        color: '#EE6A6E',
+        fontWeight: 'bold',
+    },
+    defaultvalue: {
+        fontSize: 22,
+        color: '#23233C',
+        fontWeight: 'bold',
+    },
+    defaultnutri: {
+        fontSize: 10,
+        color: '#9E9E9E',
     },
     ingredientscard: {
         width: 375,
@@ -146,6 +196,22 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 20,
         paddingTop: 12,
+    },
+    cardheading: {
+        fontSize: 18,
+        color: '#303030',
+        fontWeight: 'bold',
+    },
+    ingredientswrapper: {
+        flexDirection: 'row',
+        paddingTop: 18,
+        alignItems: 'center',
+        width: 230,
+        justifyContent: 'space-between'
+    },
+    fooditems: {
+        flexDirection: 'column',
+        alignItems: 'center',
     },
     preparationcard: {
         width: 375,
