@@ -19,7 +19,7 @@ Simple Diet App Demo using React Native
 
 ## Samples
 
-<img src="https://github.com/SplashScreen.jpg" alt="SplashScreen" width="400" height="866"/>
+<img src="https://github.com/nadinCodeHat/Nutrie/tree/main/.github/images/SplashScreen" alt="SplashScreen" width="400" height="866"/>
 ![alt text](/.github/images/SplashScreen.jpg){:height="866px" width="400px"}
 ![alt text](/.github/images/SliderScreen.jpg){:height="866px" width="400px"}
 ![alt text](/.github/images/LoginScreen.jpg){:height="866px" width="400px"}
