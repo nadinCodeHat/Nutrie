@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Text, Image, View, SafeAreaView, StyleSheet, ScrollView, Dimensions, TouchableOpacity, ImageBackground } from 'react-native'
 
 const screenWidth = Dimensions.get('window').width;
@@ -9,6 +9,7 @@ const App = ({ navigation }) => {
   const monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
   ];
+  const scrollViewRef = useRef();
 
   useEffect(() => {
     var date = new Date();
@@ -35,16 +36,24 @@ const App = ({ navigation }) => {
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           <View>
             <View style={styles.card1}>
-              <Text style={{ fontSize: 16, color: '#23233C', fontWeight: 'bold' }}>Results of the week</Text>
+              <Text style={styles.cardheading}>Results of the week</Text>
               <View style={styles.details}>
-                <View styles={{ flexDirection: 'column', }}>
-                  <Text>you have lost</Text>
-                  <Text>-4kg</Text>
+                <View styles={{ flexDirection: 'column'}}>
+                  <Text style={{fontSize: 10}}>you have lost</Text>
+                  <Text style={{fontSize: 15, color: '#6CC57C', fontWeight: 'bold'}}>-4kg</Text>
                 </View>
                 <View styles={{ flexDirection: 'column', }}>
-                  <Text>you level up</Text>
-                  <Text>Level 8</Text>
+                  <Text style={{fontSize: 10}}>you level up</Text>
+                  <Text style={{fontSize: 15, color: '#6CC57C', fontWeight: 'bold'}}>Level 8</Text>
                 </View>
+                <View>
+                <Image source={require("../assets/icons/calories.png")} />
+                </View>
+              </View>
+              <View style={{alignItems: 'center'}}>
+                <Text style={{fontSize: 10}}>Never give up, {" "}
+                  <Text style={{color: '#6CC57C'}}>know more</Text>
+                </Text>
               </View>
             </View>
             <View style={{ marginTop: -50, }}>
@@ -53,9 +62,24 @@ const App = ({ navigation }) => {
           </View>
           <View>
             <View style={styles.card2}>
-              <View>
-                <Text>Your information</Text>
-                <Text>you have lost</Text>
+            <Text style={styles.cardheading}>Your Information</Text>
+              <View style={styles.details}>
+                <View styles={{ flexDirection: 'column'}}>
+                  <Text style={{fontSize: 10}}>you have lost</Text>
+                  <Text style={{fontSize: 15, color: '#6CC57C', fontWeight: 'bold'}}>-4kg</Text>
+                </View>
+                <View styles={{ flexDirection: 'column', }}>
+                  <Text style={{fontSize: 10}}>you level up</Text>
+                  <Text style={{fontSize: 15, color: '#6CC57C', fontWeight: 'bold'}}>Level 8</Text>
+                </View>
+                <View>
+                <Image source={require("../assets/icons/calories.png")} />
+                </View>
+              </View>
+              <View style={{alignItems: 'center'}}>
+                <Text style={{fontSize: 10}}>Never give up, {" "}
+                  <Text style={{color: '#6CC57C'}}>know more</Text>
+                </Text>
               </View>
             </View>
             <View style={{ marginTop: -50, }}>
@@ -75,7 +99,7 @@ const App = ({ navigation }) => {
           <Text style={styles.defaulttext}>Dinner</Text>
         </TouchableOpacity>
       </View>
-      <ScrollView contentContainerStyle={styles.contentContainer} horizontal={true} showsHorizontalScrollIndicator={false}>
+      <ScrollView contentContainerStyle={styles.contentContainer} horizontal={true} showsHorizontalScrollIndicator={false} ref={scrollViewRef} onContentSizeChange={() => scrollViewRef.current.scrollTo({ x: 140, y: 0, animated: true })}>
         <View style={styles.imageviews}>
           <View style={styles.shadowview}>
             <Image source={require("../assets/images/raisins_and_banana.png")} />
@@ -120,7 +144,9 @@ const App = ({ navigation }) => {
       </View>
     </SafeAreaView>
   );
+
 }
+
 
 export default App
 
@@ -157,7 +183,7 @@ const styles = StyleSheet.create({
   },
   cardlayout: {
     flexDirection: 'row',
-    marginTop: 20,
+    marginTop: 10,
   },
   card1: {
     width: 266,
@@ -165,6 +191,13 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 10,
     marginLeft: 30,
+  },
+  cardheading: {
+    fontSize: 16,
+    color: '#23233C',
+    fontWeight: 'bold',
+    paddingHorizontal: 16,
+    paddingTop: 16,
   },
   card2: {
     width: 266,
@@ -175,7 +208,10 @@ const styles = StyleSheet.create({
     marginRight: 20,
   },
   details: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    justifyContent: 'space-between',
   },
   breakfastbtn: {
     width: 133,
@@ -206,11 +242,12 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     height: 420,
-    alignItems: 'center'
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   imageviews: {
-    flexDirection: 'column',
     alignItems: 'center',
+    marginHorizontal: 15,
   },
   shadowview: {
     shadowOffset: { width: 10, height: 10 },
